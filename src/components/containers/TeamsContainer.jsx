@@ -1,31 +1,13 @@
-import React from 'react';
 import Teams from '../ui/Teams.jsx'
+import { connect } from 'react-redux'
 
 
-class TeamsContainer extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			teams: []
-		}
-	}
-	render() {
-		return (
-			<Teams />
-		)
-	}
-	componentDidMount() {
-		fetch('http://localhost:8080/api/teams', { 
-			mode: 'no-cors',
-		    headers: {
-	        	"Content-Type": "application/json",
-	        	"Accept": "application/json"
-            }
-		})
-			.then((response) => response.json())
-			.then((json) => console.log(`${json}`))
-			.catch((err) => console.log(err));
+const mapStateToProps = (state) => {
+	return {
+		teams: state.teams
 	}
 }
+
+const TeamsContainer = connect(mapStateToProps)(Teams);
 
 export default TeamsContainer;
