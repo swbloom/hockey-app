@@ -3,12 +3,12 @@ const teams = (state = [], action) => {
 		case 'ADD_TEAM':
 			return [...state,
 				{
-					_id: action.id,
+					_id: action._id,
 					name: action.name
 				}
-			]
-		case 'ADD_TEAMS':
-			return [...state, ...action.teams];
+		];
+		case 'DISPLAY_TEAMS':
+			return action.teams;
 			
 		default:
 			return state
